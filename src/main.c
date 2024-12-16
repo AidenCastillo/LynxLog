@@ -26,14 +26,24 @@ int main(int argc, char *argv[])
 {
     // Check if the number of arguments is correct
     if (argc < 2) {
-        printf("Usage: %s <name>\n", argv[0]);
+        printf("Usage: %s <command> [args]\n", argv[0]);
         return EXIT_FAILURE;
     }
 
     if (strcmp(argv[1], "init") == 0) {
-        init();
-    } else if (strcmp(argv[1], "add") == 0 && argc == 3) {
+        init_linxlog();
+    }
+    else if (strcmp(argv[1], "add") == 0 && argc == 3) {
         add_file(argv[2]);
+    }
+    else if (strcmp(argv[1], "commit") == 0 && argc == 3) {
+        commit(argv[2]);
+    }
+    else if (strcmp(argv[1], "log") == 0) {
+        show_log();
+    }
+    else if (strcmp(argv[1], "status") == 0) {
+        status();
     }
     else {
         printf("Unknown comamnd: %s\n", argv[1]);
